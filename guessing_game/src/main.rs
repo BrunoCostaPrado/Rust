@@ -1,7 +1,7 @@
+use colored::*;
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
-
 fn main() {
     println!("Adivinhe um numero!");
     let secret_number = rand::thread_rng().gen_range(1, 101);
@@ -23,10 +23,10 @@ fn main() {
         println!("Você adivinhou: {}", guess);
 
         match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Você errou! O numero secreto é maior"),
-            Ordering::Greater => println!("Você errou! O numero secreto é menor"),
+            Ordering::Less => println!("{}", "Menor".red()),
+            Ordering::Greater => println!("{}", "Maior".purple()),
             Ordering::Equal => {
-                println!("Você acertou!");
+                println!("{}","Você acertou!".green());
                 break;
             }
         }
