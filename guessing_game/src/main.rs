@@ -26,7 +26,7 @@ fn main() {
             Ordering::Less => println!("{}", "Menor".red()),
             Ordering::Greater => println!("{}", "Maior".purple()),
             Ordering::Equal => {
-                println!("{}","Você acertou!".green());
+                println!("{}", "Você acertou!".green());
                 break;
             }
         }

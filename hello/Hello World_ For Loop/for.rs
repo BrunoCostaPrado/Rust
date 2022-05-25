@@ -1,9 +1,8 @@
-
 #![allow(unused)]
 fn main() {
-let v = &["Ola" , "Tudo", "bem?"];
+    let v = &["Ola", "Tudo", "bem?"];
 
-for text in v {
-    println!("Teste {}.", text);
-}
+    for text in v {
+        println!("Teste {}.", text);
+    }
 }
