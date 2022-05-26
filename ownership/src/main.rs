@@ -58,7 +58,7 @@ fn main() {
     let word = first_word(s2);
     */
 
-    let a = [1, 2, 3, 4, 5];
+    let a = [1, 2, 3, 4, 5,6];
     let slice =&a[0..2];
     println!("{:?}", slice);
 }
