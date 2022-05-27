@@ -1,5 +1,5 @@
 [package]
-name = "For_Loop"
+name = "my-project"
 version = "0.1.0"
 authors = ["Bruno Costa"]
 edition = "2021"
