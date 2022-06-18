@@ -1,5 +1,3 @@
-#[warn(non_snake_case)]
-
 pub struct NewsArticle {
     pub author: String,
     pub headline: String,
@@ -7,12 +5,11 @@ pub struct NewsArticle {
 }
 
 impl Summary for NewsArticle {
-    fn summarize(&self) -> String {
-        format!("{}, by {}", self.headline, self.author)
+    fn summarize_author(&self) -> String {
+        format!("{}", self.author)
     }
 }
 
-#[derive()]
 pub struct Tweet {
     pub username: String,
     pub content: String,
@@ -21,27 +18,29 @@ pub struct Tweet {
 }
 
 impl Summary for Tweet {
+    fn summarize_author(&self) -> String {
+        format!("@{}", self.username)
+    }
     fn summarize(&self) -> String {
         format!("{}: {}", self.username, self.content)
     }
 }
-
 pub trait Summary {
-    fn summarize(&self) -> String;
+    fn summarize_author(&self) -> String;
+    fn summarize(&self) -> String {
+        format!("(Read more from {}...)", self.summarize_author())
+    }
 }
 
-fn main() {
-    let tweet = Tweet {
+fn returns_summarizable() -> impl Summary {
+    Tweet {
         username: String::from("horse_ebooks"),
         content: String::from("of course, as you probably already know, people"),
         reply: false,
         retweet: false,
-    };
-    let article = NewsArticle {
-        author: String::from("Bob"),
-        headline: String::from("Penguin goes public!"),
-        content: String::from("Penguin is the new thing"),
-    };
-    println!("Tweet sumarry: {}", tweet.summarize());
-    println!("Article sumarry: {}", article.summarize());
+    }
+}
+
+fn main() {
+    println!("{}", returns_summarizable().summarize());
 }
